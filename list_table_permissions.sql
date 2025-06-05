@@ -1,9 +1,7 @@
 -- scripts/permissions/list_table_permissions.sql
 /*
-Nome: Lista Permissões de Tabelas
-Descrição: Lista permissões de usuários/roles em tabelas, excluindo schemas de sistema
+*Descrição:* Lista permissões de usuários/roles em tabelas, excluindo schemas de sistema
 Versão: 1.0
-Data Criação: 2025-06-05
 
 Parametros:
   Nenhum
