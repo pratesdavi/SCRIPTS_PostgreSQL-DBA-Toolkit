@@ -12,4 +12,4 @@ Lista permissões agrupadas por usuário/schema/tabela
 
 **Uso:**
 ```bash
-psql -d seu_banco -f scripts/permissions/list_table_permissions.sql
+psql -d nome_banco -f scripts/permissions/list_table_permissions.sql
