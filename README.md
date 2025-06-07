@@ -16,7 +16,7 @@ psql -d nome_banco -f scripts/permissions/list_table_permissions.sql
 ```
 
 
-## 🔐 Scripts de Permissões
+## 🔐 Monitor Autovacuum
 
 ### [Listar Permissões de Tabelas](/list_table_permissions.sql)
 Lista permissões agrupadas por usuário/schema/tabela
