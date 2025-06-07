@@ -18,10 +18,10 @@ psql -d nome_banco -f scripts/permissions/list_table_permissions.sql
 
 ## 🔐 Monitor Autovacuum
 
-### [Listar Permissões de Tabelas](/list_table_permissions.sql)
-Lista permissões agrupadas por usuário/schema/tabela
+### [Listar Permissões de Tabelas](/monitor_autovacuum_performance.sql)
+Monitora as últimas operações de autovacuum e analyze em tabelas de um schema específico.
 
 **Uso:**
 ```bash
-psql -d nome_banco -f scripts/permissions/list_table_permissions.sql
+psql -d nome_banco -f scripts/permissions/monitor_autovacuum_performance.sql
 ```
