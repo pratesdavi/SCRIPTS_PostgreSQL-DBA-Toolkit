@@ -7,7 +7,7 @@ Coleção de scripts úteis para administração de bancos PostgreSQL
 
 ## 🔐 Scripts de Permissões
 
-### [Listar Permissões de Tabelas](scripts-database/blob/main/list_table_permissions.sql)
+### [Listar Permissões de Tabelas](scripts-database/list_table_permissions.sql)
 Lista permissões agrupadas por usuário/schema/tabela
 
 **Uso:**
