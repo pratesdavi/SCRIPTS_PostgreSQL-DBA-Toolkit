@@ -17,23 +17,20 @@
     - Formata os valores para melhor leitura (separadores e casas decimais).
 
 🗂️ Tabelas utilizadas:
-    - tabela_preco_produtos tpp
+    - nomedoschema.tabela_preco_produtos_coletado tppc
     - tabela_itens: Dimensão dos itens coletados (produtos).
 
 */
 
 SELECT
     diu.ite_description,  -- Nome do produto
-    TO_CHAR(MIN(tpp.preco), '99G999D99') AS min_preco,              -- Preço mínimo formatado
-    TO_CHAR(AVG(tpp.preco), '99G999D99') AS media_preco,           -- Preço médio formatado
-    TO_CHAR(MAX(tpp.preco), '99G999D99') AS max_preco,             -- Preço máximo formatado
-    TO_CHAR(MAX(tpp.preco) - MIN(tpp.preco), '99G999D99') AS difference -- Diferença entre máx. e mín.
-FROM wogsemptcl.tabela_preco_produtos tpp
-INNER JOIN d_locais_umov dlu
-    ON fvca.loc_id = dlu.loc_id
-INNER JOIN d_itens_umov diu
-    ON fvca.ite_id = diu.ite_id
-WHERE fvca.validado = 'SIM - SEM ERRO'  -- Apenas coletas validadas como sem erro
+    TO_CHAR(MIN(tppc.preco), '99G999D99') AS min_preco,              -- Preço mínimo formatado
+    TO_CHAR(AVG(tppc.preco), '99G999D99') AS media_preco,           -- Preço médio formatado
+    TO_CHAR(MAX(tppc.preco), '99G999D99') AS max_preco,             -- Preço máximo formatado
+    TO_CHAR(MAX(tppc.preco) - MIN(tppc.preco), '99G999D99') AS difference -- Diferença entre máx. e mín.
+FROM nomedoschema.tabela_preco_produtos_coletado tppc
+INNER JOIN tabela_itens ti
+    ON tppc.id_item = ti.id_item
 GROUP BY dlu.loc_description, diu.ite_description
-HAVING MAX(fvca.preco) - MIN(fvca.preco) > 300  -- Casos com variação maior que R$300
-ORDER BY MAX(fvca.preco) - MIN(fvca.preco) DESC; -- Ordenação por maior discrepância
+HAVING MAX(tppc.preco) - MIN(tppc.preco) > 300  -- Casos com variação maior que R$300
+ORDER BY MAX(tppc.preco) - MIN(tppc.preco) DESC; -- Ordenação por maior discrepância
