@@ -15,3 +15,18 @@ WHERE nt.id_item = ti.id_item;
 UPDATE nome_tabela nt
 JOIN tabela_itens ti ON nt.id_item = ti.id_item
 SET nt.categoria = ti.nome_categoria;
+
+
+-- ✅ Sintaxe equivalente para Oracle:
+UPDATE nome_tabela nt
+SET categoria = (
+    SELECT ti.nome_categoria
+    FROM tabela_itens ti
+    WHERE ti.id_item = nt.id_item
+)
+WHERE EXISTS (
+    SELECT 1
+    FROM tabela_itens ti
+    WHERE ti.id_item = nt.id_item
+);
+
